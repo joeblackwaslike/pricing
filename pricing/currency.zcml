@@ -1,0 +1,36 @@
+<configure
+    xmlns:zope="http://namespaces.zope.org/zope"
+    xmlns="http://namespaces.zope.org/currency">
+
+    <zope:include package="." file="currency-meta.zcml" />
+
+    <currency default="USD">
+        <currencyFormat
+            name="bitcoin"
+            code="BTC"
+            symbol="₿"
+            format="¤#,##0.########"
+            currency_digits="false"
+            decimal_quantization="true" />
+        <currencyFormat
+            name="litecoin"
+            code="LTC"
+            symbol="Ł"
+            format="¤#,##0.########"
+            currency_digits="false"
+            decimal_quantization="true" />
+        <currencyFormat
+            name="ether"
+            code="ETH"
+            symbol="Ξ"
+            format="¤#,##0.##################"
+            currency_digits="false"
+            decimal_quantization="true" />
+
+        <exchange
+            component=".exchange.Exchange"
+            backend=".exchange.CoinBaseBackend"
+            base="USD" />
+    </currency>
+
+</configure>

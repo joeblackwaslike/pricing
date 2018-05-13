@@ -1,0 +1,13 @@
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+MANIFEST
+build/
+dist/
+.tox/
+.python-version
+local/
+*.pytest_cache/
+venv/
+local/

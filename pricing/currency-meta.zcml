@@ -1,0 +1,23 @@
+<configure
+    xmlns:meta="http://namespaces.zope.org/meta">
+
+    <meta:directives namespace="http://namespaces.zope.org/currency">
+
+        <meta:complexDirective
+            name="currency"
+            schema=".metadirectives.ICurrencyDirective"
+            handler=".metaconfigure.CurrencyHandler">
+
+            <meta:subdirective
+                name="currencyFormat"
+                schema=".metadirectives.ICurrencyFormatDirective" />
+
+            <meta:subdirective
+                name="exchange"
+                schema=".metadirectives.IExchangeDirective" />
+
+        </meta:complexDirective>
+
+    </meta:directives>
+
+</configure>

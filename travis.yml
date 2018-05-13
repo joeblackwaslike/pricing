@@ -1,0 +1,28 @@
+language: python
+python:
+- '3.6'
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+
+install: pip install -e .
+
+before_script: pip install pytest
+
+script: pytest
+
+before_deploy:
+- pip install m2r
+- python3 setup.py sdist bdist_wheel
+
+deploy:
+  provider: pypi
+  user: joeblackwaslike
+  password:
+    secure: "RSHYKBmzY7xT0OpUPJGIeEvlSVORdtLOVQCEk66ZSHOzkE2BHE75DefZzykWEPo9r54iAZ6qk+ye3qll96JARPrxm4u+Q9PtwBEk0EfSIo1iiqQLAPZo3lDagIwVnCSFS1Mba2ZnCrzjNpgTGBJYOqv2Vdeh2m7mtMbUtM1hHHebGeCiUHHc3mmSDvJY65T1TK3ZnyQ9xZVlrD67bgtECqEvan2slHRzNa1F1DV3zYR5lIyEBL1zPJynHwMCL4vfnFyhR0CrnyA+FY1NEI7LQz6+jupFD11Mf2tujNdDykXDhuu+CIyihBYXX1x51PV4yaBL4nwqxMQqhS+TSC7LxJ5QTrgYXsLpSuVpWHjAAMTtJkjLZsAid9H7LwbXiw9+DpvxcmgkDo+hluN4/JTpL+XEPBHyvl36szz1EHpf/4autxS+lUoYXcx7qU7lwZai4XSFtA6rBBerPrfPcgpheyEdG/RWkfjybshQkSWnATOsiI1UwDGC+nPQ3l7PFjWK/KKETc074Rcnc4RKKCQae+Q4rDbs3k+Xa2PCQ20W0cpT8orvHujR+auVrkxx4vUdrx42umx5H6fK/Eq5JNyI6v/BXddjkNvpYiLAtOh0cIq5rp9VTyL44L6CjnOTqjN5AxviU9R2MgGT3fWbxqYDEI1au/C/7DsgjY7ofH3iqaU="
+  on:
+    tags: true
+  skip_cleanup: true
+  distributions: "sdist bdist_wheel"
