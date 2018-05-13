@@ -80,3 +80,31 @@ class IExchange(Interface):
 
     def quotation(origin, target):
         """Return quotation between two currencies (origin, target)"""
+
+
+class IBIP21PaymentURI(Interface):
+    """A BIP21 Payment URI class."""
+
+    currency = Attribute('Currency type, ex: bitcoin, litecoin, etc')
+    address = Attribute('The address to send payment')
+    amount = Attribute('The amount requested')
+
+    def to_uri():
+        """Return a formatted BIP21 Payment URI."""
+
+    def parse_uri(uri):
+        """Parses a BIP21 Payment URI into this class"""
+
+
+class IEIP681PaymentURI(Interface):
+    """An EIP681 Payment URI class."""
+
+    currency = Attribute('Currency type, ex: bitcoin, litecoin, etc')
+    address = Attribute('The address to send payment')
+    value = Attribute('The value requested')
+
+    def to_uri():
+        """Return a formatted EIP681 Payment URI."""
+
+    def parse_uri(uri):
+        """Parses a EIP681 Payment URI into this class"""

@@ -52,8 +52,30 @@ EUR 9.99
 '€1,234.57'
 ```
 
+### Payment URI's
+Create BIP21 and EIP681 compatible payment URI's.
+```python
+>>> from pricing.uris import BIP21PaymentURI
+... BIP21PaymentURI(
+... 'bitcoin',
+... address='19kxPokCjD6tUU3sHaLZgEQBkRsCTBt3jj',
+... amount='4.32345').to_uri()
+'bitcoin:19kxPokCjD6tUU3sHaLZgEQBkRsCTBt3jj?amount=4.32345'
+```
+
+```python
+>>> from pricing.uris import EIP681PaymentURI
+... EIP681PaymentURI(
+... 'ethereum',
+... address='077a7506b69e37e4f6852577190f04a35df9a36c',
+... value='4.32345').to_uri()
+'ethereum:0x077a7506b69e37e4f6852577190f04a35df9a36c?value=4.32345'
+```
+
+
 ### Currency Exchange
 Currency exchange works by "installing" a **backend** class that implements the `IExchangeBackend` interface.
+
 
 ### XPrice
 You can use ``money.XPrice`` (a subclass of Price), for automatic currency conversion while adding, subtracting, and dividing money objects (+, +=, -, -=, /, //). This is useful when aggregating lots of money objects with heterogeneous currencies. The currency of the leftmost object has priority.
@@ -62,7 +84,6 @@ You can use ``money.XPrice`` (a subclass of Price), for automatic currency conve
 from pricing import XPrice
 
 # Register backend and rates as above...
-
 a = XPrice(1, 'AAA')
 b = XPrice(1, 'BBB')
 

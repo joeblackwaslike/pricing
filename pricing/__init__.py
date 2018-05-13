@@ -30,7 +30,7 @@ Usage::
     EUR 9.99
 """
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __title__ = 'pricing'
 __all__ = [
     'exceptions',

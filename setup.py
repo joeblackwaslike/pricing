@@ -52,6 +52,7 @@ setup(
         'zulu>=0.12.0',
         'attrs>=18.1.0',
         'babel>=2.5.3',
+        'boltons>=18.0.0',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
